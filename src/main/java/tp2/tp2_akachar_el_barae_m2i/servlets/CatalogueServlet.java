@@ -21,11 +21,10 @@ public class CatalogueServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        produits.add(new Produit(1, "Ordinateur portable", 899.99));
-        produits.add(new Produit(2, "Smartphone", 499.99));
-        produits.add(new Produit(3, "Tablette", 329.99));
-        produits.add(new Produit(4, "Casque audio", 79.99));
-        produits.add(new Produit(5, "Moniteur", 249.99));
+        produits.add(new Produit(1, "Ordinateur portable", 4000));
+        produits.add(new Produit(2, "Smartphone", 1000));
+        produits.add(new Produit(3, "Tablette", 1500));
+        produits.add(new Produit(4, "Casque", 120));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

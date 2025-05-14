@@ -4,16 +4,27 @@
     <meta charset="UTF-8">
     <title>Connexion</title>
     <style>
+        .login-container{
+            margin-left: 10px;
+        }
+        form{
+            border: black;
+            border-radius: 7px;
+
+        }
+        .form-group{
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
 <div class="login-container">
     <h2>Connexion</h2>
-    <% if(request.getParameter("error") != null) { %>
-    <div class="error-message">
-        Identifiants incorrects. Veuillez réessayer.
-    </div>
-    <% } %>
+<!--    <% if(request.getParameter("error") != null) { %>-->
+<!--    <div class="error-message">-->
+<!--        Identifiants incorrects. Veuillez réessayer.-->
+<!--    </div>-->
+<!--    <% } %>-->
 
     <form action="LoginServlet" method="post">
         <div class="form-group">

@@ -73,14 +73,14 @@ public class PanierServlet extends HttpServlet {
                 for (Produit produit : panier.getListe_Produits()) {
                     out.println("<tr>");
                     out.println("<td>" + produit.getNom() + "</td>");
-                    out.println("<td>" + produit.getPrix() + " €</td>");
+                    out.println("<td>" + produit.getPrix() + " DH</td>");
                     out.println("</tr>");
                 }
 
                 out.println("</tbody>");
                 out.println("</table>");
                 out.println("<div class='total'>");
-                out.println("Total: " + panier.getTotal() + " €");
+                out.println("Total: " + panier.getTotal() + " DH");
                 out.println("</div>");
             }
             out.println("<a href='CatalogueServlet' class='btn btn-secondary'>Retour au catalogue</a>");
