@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <style>
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>Connexion</h2>
+
+    <% if(request.getParameter("error") != null) { %>
+    <div class="error-message">
+        Identifiants incorrects. Veuillez réessayer.
+    </div>
+    <% } %>
+
+    <form action="LoginServlet" method="post">
+        <div class="form-group">
+            <label for="login">Nom d'utilisateur:</label>
+            <input type="text" id="login" name="login" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <button type="submit">Se connecter</button>
+    </form>
+</div>
+</body>
+</html>
