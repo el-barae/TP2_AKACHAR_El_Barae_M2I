@@ -13,8 +13,8 @@ import tp2.tp2_akachar_el_barae_m2i.model.Utilisateur;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static final String VALID_LOGIN = "elbarae";
-    private static final String VALID_PASSWORD = "abc2002";
+    private static final String VALID_LOGIN = "admin";
+    private static final String VALID_PASSWORD = "1234";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
