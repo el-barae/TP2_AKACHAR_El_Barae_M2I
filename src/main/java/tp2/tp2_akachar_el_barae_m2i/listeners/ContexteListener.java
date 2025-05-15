@@ -17,29 +17,29 @@ public class ContexteListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         startTime = System.currentTimeMillis();
-        ServletContext context = sce.getServletContext();
+        ServletContext c = sce.getServletContext();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String startTimeFormatted = sdf.format(new Date(startTime));
         System.out.println("Application demarree a " + startTimeFormatted);
-        System.out.println("Chemin de l'application: " + context.getRealPath("/"));
+        System.out.println("Chemin de l'application: " + c.getRealPath("/"));
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
-        long seconds = duration / 1000;
-        long minutes = seconds / 60;
-        long hours = minutes / 60;
-        long days = hours / 24;
-        seconds %= 60;
-        minutes %= 60;
-        hours %= 24;
+        long sec = duration / 1000;
+        long min = sec / 60;
+        long h = min / 60;
+        long d = h / 24;
+        sec %= 60;
+        min %= 60;
+        h %= 24;
         String durationFormatted = String.format("%d jours, %d heures, %d minutes, %d secondes",
-                days, hours, minutes, seconds);
-        ServletContext context = sce.getServletContext();
+                d, h, min, sec);
+        ServletContext c = sce.getServletContext();
         try {
-            String filePath = context.getRealPath("/") + "running_time.txt";
+            String filePath = c.getRealPath("/") + "running_time.txt";
             File file = new File(filePath);
             file.getParentFile().mkdirs();
             FileWriter writer = new FileWriter(filePath);

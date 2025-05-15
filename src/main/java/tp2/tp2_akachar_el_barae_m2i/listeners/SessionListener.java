@@ -8,13 +8,13 @@ import tp2.tp2_akachar_el_barae_m2i.model.Utilisateur;
 
 @WebListener
 public class SessionListener implements HttpSessionListener {
-    private static int activeUsers = 0;
+    private static int activeUsr = 0;
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
-        activeUsers++;
+        activeUsr++;
         System.out.println("Session cree - ID: " + se.getSession().getId());
-        System.out.println("Nombre d'utilisateurs actifs: " + activeUsers);
+        System.out.println("Nombre d'utilisateurs actifs: " + activeUsr);
     }
 
     @Override
@@ -26,11 +26,7 @@ public class SessionListener implements HttpSessionListener {
         } else {
             System.out.println("Session detruite (utilisateur inconnu) - ID: " + session.getId());
         }
-        activeUsers--;
-        System.out.println("Nombre d'utilisateurs actifs: " + activeUsers);
-    }
-
-    public static int getActiveUsers() {
-        return activeUsers;
+        activeUsr--;
+        System.out.println("Nombre d'utilisateurs actifs: " + activeUsr);
     }
 }

@@ -20,24 +20,24 @@ public class AuthFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
 
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        String requestURI = httpRequest.getRequestURI();
-        String path = requestURI.substring(httpRequest.getContextPath().length());
+        HttpServletRequest httpReq = (HttpServletRequest) req;
+        HttpServletResponse httpRes = (HttpServletResponse) res;
+        String requestURI = httpReq.getRequestURI();
+        String path = requestURI.substring(httpReq.getContextPath().length());
         boolean isLoginPage = path.endsWith("login.html") || path.endsWith("LoginServlet");
 
         if (!isLoginPage) {
-            HttpSession session = httpRequest.getSession(false);
+            HttpSession session = httpReq.getSession(false);
 
             if (session == null || session.getAttribute("utilisateur") == null) {
-                httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.html");
+                httpRes.sendRedirect(httpReq.getContextPath() + "/login.html");
                 return;
             }
         }
-        chain.doFilter(request, response);
+        chain.doFilter(req, res);
     }
 
     @Override

@@ -17,14 +17,14 @@ public class CharsetEncodingFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
-        if (request.getCharacterEncoding() == null) {
-            request.setCharacterEncoding("UTF-8");
+        if (req.getCharacterEncoding() == null) {
+            req.setCharacterEncoding("UTF-8");
         }
-        response.setCharacterEncoding("UTF-8");
+        res.setCharacterEncoding("UTF-8");
 
-        chain.doFilter(request, response);
+        chain.doFilter(req, res);
     }
 
     @Override

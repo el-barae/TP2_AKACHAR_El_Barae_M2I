@@ -20,17 +20,17 @@ public class AjouterProduitServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        produits.add(new Produit(1, "Ordinateur portable", 4000));
+        produits.add(new Produit(1, "PC portable", 4000));
         produits.add(new Produit(2, "Smartphone", 1000));
         produits.add(new Produit(3, "Tablette", 1500));
         produits.add(new Produit(4, "Casque", 120));
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+        HttpSession session = req.getSession(false);
         Panier panier = (Panier) session.getAttribute("panier");
-        int productId = Integer.parseInt(request.getParameter("id"));
+        int productId = Integer.parseInt(req.getParameter("id"));
         Produit produitToAdd = null;
         for (Produit produit : produits) {
             if (produit.getId() == productId) {
@@ -42,6 +42,6 @@ public class AjouterProduitServlet extends HttpServlet {
             panier.ajouterProduit(produitToAdd);
             session.setAttribute("panier", panier);
         }
-        response.sendRedirect("CatalogueServlet");
+        res.sendRedirect("CatalogueServlet");
     }
 }
